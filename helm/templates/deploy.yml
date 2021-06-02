@@ -1,17 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: controller1
-  namespace: try
+  name: simple-web
 spec:
   selector:
     matchLabels:
-      app: controller1
-  replicas: 2 # tells deployment to run 2 pods matching the template
+      app: simple-web
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: controller1
+        app: simple-web
     spec:
       containers:
       - name: simple-web1
@@ -25,7 +24,7 @@ spec:
             cpu: "500m"
         env:
         - name: PORT
-          value: "8080"
+          value: "{{ .Values.port1 }}"
       - name: simple-web2
         image: cwza/simple_web:latest
         resources:
@@ -37,4 +36,4 @@ spec:
             cpu: "500m"
         env:
         - name: PORT
-          value: "8081"
+          value: "{{ .Values.port2 }}"

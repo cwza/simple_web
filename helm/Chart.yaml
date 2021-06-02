@@ -1,0 +1,5 @@
+apiVersion: v1
+name: simple_web
+version: 0.0.1
+home: https://github.com/cwza/simple_web
+description: Simplest Http Web Application
