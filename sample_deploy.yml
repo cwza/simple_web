@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller1
+  namespace: try
+spec:
+  selector:
+    matchLabels:
+      app: controller1
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: controller1
+    spec:
+      containers:
+      - name: simple-web1
+        image: cwza/simple_web:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          value: "8080"
+      - name: simple-web2
+        image: cwza/simple_web:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          value: "8081"
