@@ -13,4 +13,5 @@ When you push to master branch the github action will automatically build image 
 kubectl create namespace try
 cd helm
 helm install --namespace=try -f values.yaml simple-web .
+helm delete simple-web --namespace=try
 ```
