@@ -21,11 +21,16 @@ func init() {
 	port = getenv("PORT")
 }
 
+func index(w http.ResponseWriter, req *http.Request) {
+	fmt.Fprintf(w, "This is homepage.\n")
+}
+
 func hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, "hello\n")
 }
 
 func main() {
+	http.HandleFunc("/", index)
 	http.HandleFunc("/hello", hello)
 	log.Printf("Listen on port: %s", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
