@@ -7,5 +7,12 @@ spec:
     app: {{ .Values.name }}
   ports:
     - protocol: TCP
+      name: simple-web1
       port: {{ .Values.port1 }}
       targetPort: {{ .Values.port1 }}
+    {{- if .Values.multiple }}
+    - protocol: TCP
+      name: simple-web2
+      port: {{ .Values.port2 }}
+      targetPort: {{ .Values.port2 }}
+    {{- end }}

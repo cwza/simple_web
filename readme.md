@@ -12,6 +12,9 @@ When you push to master branch the github action will automatically build image 
 ``` sh
 kubectl create namespace try
 cd helm
-helm install --set name=simple-web-ingress -n try -f values.yaml simple-web-ingress .
-helm delete simple-web-ingress --namespace=try
+# One container
+helm install --set name=simple-web -n try -f values.yaml simple-web .
+# Two container
+# helm install --set name=simple-web --set multiple=true -n try -f values.yaml simple-web .
+helm delete simple-web --namespace=try
 ```

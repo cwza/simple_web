@@ -25,15 +25,17 @@ spec:
         env:
         - name: PORT
           value: "{{ .Values.port1 }}"
-      # - name: simple-web2
-      #   image: cwza/simple_web:latest
-      #   resources:
-      #     requests:
-      #       memory: "64Mi"
-      #       cpu: "250m"
-      #     limits:
-      #       memory: "128Mi"
-      #       cpu: "500m"
-      #   env:
-      #   - name: PORT
-      #     value: "{{ .Values.port2 }}"
+      {{- if .Values.multiple }}
+      - name: simple-web2
+        image: cwza/simple_web:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          value: "{{ .Values.port2 }}"
+      {{- end }}

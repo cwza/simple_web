@@ -1,3 +1,4 @@
 name: "simple-web"
+multiple: false
 port1: "8080"
-# port2: "8081"
+port2: "8081"
